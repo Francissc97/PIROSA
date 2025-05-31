@@ -1,12 +1,17 @@
 /* Estilos Generales */
 :root {
-    --primary-color: #007bff; /* Azul primario */
-    --secondary-color: #28a745; /* Verde para sostenibilidad */
+    --primary-color: #007bff;
+    --secondary-color: #28a745;
     --light-color: #f8f9fa;
     --dark-color: #343a40;
     --text-color: #333;
     --light-text-color: #fdfdfd;
     --font-family: 'Arial', sans-serif;
+    --header-height: 70px; /* Altura del header para cálculos */
+}
+
+html {
+    scroll-behavior: smooth; /* Para el smooth scroll de los enlaces del menú */
 }
 
 body {
@@ -16,6 +21,7 @@ body {
     line-height: 1.7;
     color: var(--text-color);
     background-color: #fff;
+    font-size: 16px; /* Base font size */
 }
 
 .container {
@@ -29,6 +35,7 @@ body {
 h1, h2, h3 {
     margin-bottom: 1rem;
     font-weight: 600;
+    line-height: 1.3;
 }
 
 h1 { font-size: 2.8rem; }
@@ -55,66 +62,111 @@ img.rounded {
 img.img-fluid {
     max-width: 100%;
     height: auto;
+    display: block; /* Evita espacio extra debajo de la imagen */
+}
+
+label { /* Estilo para los labels del formulario */
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 /* Header y Navegación */
 header {
-    background-color: rgba(255, 255, 255, 0.95); /* Ligeramente más opaco */
-    padding: 0.5rem 0; /* Reducir padding vertical */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 0; /* El padding lo controlará el .container y la altura */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
+    height: var(--header-height);
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
 header .logo-link #logo-empresa {
-    max-height: 60px; /* Ajusta según el tamaño de tu logo */
+    max-height: 55px; /* Ajusta según el tamaño de tu logo */
     width: auto;
     vertical-align: middle;
 }
 
-header nav ul {
+header nav ul.nav-menu { /* Clase específica para el menú */
     display: flex;
-    align-items: center; /* Para alinear con el logo si es necesario */
+    align-items: center;
 }
 
-header nav ul li {
-    margin-left: 25px; /* Aumentar un poco el espaciado */
+header nav ul.nav-menu li {
+    margin-left: 25px;
 }
 
-header nav ul li a {
+header nav ul.nav-menu li a {
     color: var(--text-color);
     font-weight: 500;
-    padding: 8px 12px; /* Ajustar padding */
+    padding: 8px 12px;
     transition: color 0.3s ease, border-bottom-color 0.3s ease;
-    border-bottom: 2px solid transparent; /* Para efecto hover */
+    border-bottom: 3px solid transparent; /* Borde más grueso para efecto hover */
+    line-height: calc(var(--header-height) - 16px); /* Alinear verticalmente */
+    display: inline-block;
 }
 
-header nav ul li a:hover, header nav ul li a.active {
+header nav ul.nav-menu li a:hover,
+header nav ul.nav-menu li a.active-link { /* Clase para el enlace activo */
     color: var(--primary-color);
     border-bottom-color: var(--primary-color);
 }
 
+/* Estilos para el Menú Hamburguesa */
+.menu-toggle {
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* Ajustar si usas un icono SVG */
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Encima del menú desplegable */
+}
+.menu-icon-bar { /* Barras del icono hamburguesa */
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+/* Animación para el icono hamburguesa (opcional) */
+.menu-toggle.active .menu-icon-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .menu-icon-bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .menu-icon-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
 /* Botones */
 .btn {
     display: inline-block;
-    padding: 0.8rem 1.8rem;
-    border-radius: 5px;
+    padding: 0.9rem 2rem; /* Un poco más de padding */
+    border-radius: 6px; /* Bordes un poco más redondeados */
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 500; /* Un poco más de peso */
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     border: none;
     text-align: center;
+    font-size: 1rem;
 }
 .btn:hover {
-    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .btn-primary {
@@ -138,15 +190,16 @@ header nav ul li a:hover, header nav ul li a.active {
 /* Hero Section con Video/Imagen de Fondo */
 .hero-section {
     position: relative;
-    height: 80vh;
+    height: 90vh; /* Un poco más alto */
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg'); /* RUTA MODIFICADA - verifica extensión real */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('hero-bg.jpg'); /* Verifica extensión real */
     background-size: cover;
-    background-position: center;
+    background-position: center center;
 }
 
 .hero-video {
@@ -157,7 +210,7 @@ header nav ul li a:hover, header nav ul li a.active {
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: 0; /* Detrás del contenido pero sobre el background-image si el video falla */
+    z-index: 0;
     transform: translateX(-50%) translateY(-50%);
     object-fit: cover;
 }
@@ -165,29 +218,29 @@ header nav ul li a:hover, header nav ul li a.active {
 .hero-content {
     position: relative;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.45);
-    padding: 30px 40px; /* Más padding horizontal */
-    border-radius: 10px;
-    max-width: 800px; /* Limitar ancho del contenido */
+    background-color: rgba(0, 0, 0, 0.5); /* Un poco más de opacidad para contraste */
+    padding: 35px 45px;
+    border-radius: 12px;
+    max-width: 850px;
 }
 
 .hero-content h1 {
-    font-size: 3.2rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
     color: #fff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para legibilidad */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
     color: #f0f0f0;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 
 /* Secciones de Contenido */
 .content-section {
-    padding: 70px 0; /* Más padding */
+    padding: 80px 0;
 }
 .content-section.bg-light {
     background-color: var(--light-color);
@@ -198,37 +251,39 @@ header nav ul li a:hover, header nav ul li a.active {
 .content-section.bg-dark h2,
 .content-section.bg-dark p,
 .content-section.bg-dark .contact-details p,
-.content-section.bg-dark .section-intro {
+.content-section.bg-dark .section-intro,
+.content-section.bg-dark label { /* Labels en fondo oscuro */
     color: var(--light-text-color);
 }
-.content-section.bg-dark a:not(.btn) { /* Para enlaces de texto en fondo oscuro */
-    color: #99caff;
+.content-section.bg-dark a:not(.btn) {
+    color: #a8d5ff; /* Enlaces más brillantes */
 }
 .content-section.bg-dark a:not(.btn):hover {
-    color: #cce5ff;
+    color: #d1e7ff;
 }
+
 
 .section-intro {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.15rem; /* Un poco más grande */
     color: #555;
-    max-width: 750px;
-    margin: 0 auto 3rem auto;
+    max-width: 800px;
+    margin: 0 auto 3.5rem auto; /* Más margen inferior */
 }
 
 
 /* Layout Dual (para dos columnas) */
 .dual-layout {
     display: flex;
-    gap: 40px; /* Más espacio */
-    align-items: center; /* Centrar verticalmente si es posible */
+    gap: 40px;
+    align-items: center;
 }
 .dual-layout > div {
     flex: 1;
 }
 .dual-layout img {
     margin-bottom: 1rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra sutil a imágenes */
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
 }
 
 
@@ -237,16 +292,16 @@ header nav ul li a:hover, header nav ul li a.active {
     display: flex;
     gap: 30px;
     justify-content: center;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     flex-wrap: wrap;
 }
 .card {
     background-color: #fff;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 12px; /* Más redondeado */
+    box-shadow: 0 6px 22px rgba(0,0,0,0.08); /* Sombra un poco más pronunciada */
     flex: 1;
-    min-width: 320px;
+    min-width: 300px;
     max-width: 380px;
     text-align: left;
     display: flex;
@@ -254,14 +309,14 @@ header nav ul li a:hover, header nav ul li a.active {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-6px); /* Mayor elevación */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 .card img.card-img-top {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 8px; /* Redondeo consistente */
     margin-bottom: 1.5rem;
 }
 .technology-video {
@@ -276,16 +331,17 @@ header nav ul li a:hover, header nav ul li a.active {
     margin-bottom: 0.8rem;
     color: var(--primary-color);
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.7rem; /* Más grande */
 }
 .card-short-desc {
     margin-bottom: 1rem;
     flex-grow: 1;
     color: #444;
+    font-size: 0.95rem;
 }
 .card-full-desc {
     margin-bottom: 1.5rem;
-    font-size: 0.95em;
+    font-size: 0.9rem;
     color: #555;
     flex-grow: 1;
 }
@@ -303,17 +359,17 @@ header nav ul li a:hover, header nav ul li a.active {
 #impacto ul {
     list-style: none;
     padding-left: 0;
-    max-width: 800px; /* Centrar y limitar ancho */
-    margin: 1.5rem auto 0 auto;
+    max-width: 850px;
+    margin: 2rem auto 0 auto;
 }
 #impacto ul li {
     background-color: #fff;
-    padding: 18px 25px;
-    margin-bottom: 12px;
-    border-left: 6px solid var(--secondary-color);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+    padding: 20px 30px;
+    margin-bottom: 15px;
+    border-left: 7px solid var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     font-size: 1.1rem;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 8px 8px 0;
 }
 #impacto ul li strong {
     color: var(--secondary-color);
@@ -322,83 +378,145 @@ header nav ul li a:hover, header nav ul li a.active {
 
 /* Formulario de Contacto */
 .contact-form {
-    max-width: 700px;
-    margin: 2rem auto 3rem auto; /* Más margen inferior */
-    background-color: rgba(255,255,255,0.08); /* Ligero ajuste */
-    padding: 30px;
-    border-radius: 8px;
+    max-width: 750px; /* Un poco más ancho */
+    margin: 2.5rem auto 3.5rem auto;
+    background-color: rgba(255,255,255,0.08);
+    padding: 35px 40px; /* Más padding */
+    border-radius: 10px;
 }
 .form-group {
-    margin-bottom: 1.5rem; /* Más espacio */
+    margin-bottom: 1.8rem;
 }
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    padding: 14px; /* Más padding */
-    border-radius: 5px;
-    border: 1px solid #666; /* Borde más visible */
-    background-color: #3f454c; /* Un poco más claro */
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #777;
+    background-color: #4a5057; /* Más oscuro para mejor contraste */
     color: var(--light-text-color);
     box-sizing: border-box;
     font-size: 1rem;
 }
 .contact-form textarea {
     resize: vertical;
-    min-height: 120px; /* Altura mínima */
+    min-height: 140px;
 }
 .contact-form input[type="text"]::placeholder,
 .contact-form input[type="email"]::placeholder,
 .contact-form textarea::placeholder {
-    color: #a0a8b0; /* Placeholder más claro */
+    color: #b0b8c0;
+}
+.contact-form input:focus, .contact-form textarea:focus { /* Estilo al enfocar */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    outline: none;
 }
 .contact-details {
     text-align: center;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
+}
+.contact-details h3 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
 }
 .contact-details p {
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
 }
-.contact-details p strong {
-    font-weight: 600;
+.contact-details p a { /* Estilo para enlaces de tel y mail */
+    color: inherit; /* Hereda color del texto padre (blanco en este caso) */
+    text-decoration: underline;
+}
+.contact-details p a:hover {
+    text-decoration: none;
+    opacity: 0.8;
 }
 
 /* Footer */
 footer {
     background-color: var(--dark-color);
-    color: #ccc; /* Un poco más claro para el texto del footer */
+    color: #ccc;
     text-align: center;
-    padding: 2.5rem 0; /* Más padding */
+    padding: 3rem 0;
 }
 
-/* Responsividad */
-@media (max-width: 992px) {
-    .hero-content h1 { font-size: 2.6rem; }
-    .hero-content p { font-size: 1.1rem; }
-    .dual-layout { flex-direction: column; gap: 25px; }
-    .card { max-width: 90%; margin-left:auto; margin-right:auto; } /* Centrar tarjetas en tablet */
+/* Media Queries para Responsividad */
+@media (max-width: 992px) { /* Tabletas y móviles grandes */
+    body { font-size: 15px; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.4rem; }
+
+    .hero-content h1 { font-size: 2.8rem; }
+    .hero-content p { font-size: 1.15rem; }
+
+    .dual-layout { flex-direction: column; gap: 30px; }
+    .dual-layout > div { width: 100%; } /* Para que ocupen todo el ancho */
+
+    .card { max-width: 450px; margin-left:auto; margin-right:auto; }
     header .logo-link #logo-empresa { max-height: 50px; }
-    header nav ul li { margin-left: 15px; }
 }
 
-@media (max-width: 768px) {
-    header .container { flex-direction: column; }
-    header nav ul { flex-direction: column; text-align: center; margin-top: 1rem; width: 100%;}
-    header nav ul li { margin: 10px 0; display: block; width: 100%;}
-    header nav ul li a { display: block; padding: 10px; }
-    header .logo-link { margin-bottom: 10px; }
+@media (max-width: 768px) { /* Móviles */
+    body { font-size: 14px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.3rem; }
 
+    header .container {
+        /* El flex-direction column ya no es necesario si el ul se posiciona absolute */
+    }
+    header nav ul.nav-menu {
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height); /* Justo debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.99); /* Fondo para el menú desplegado */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: none; /* Oculto por defecto */
+        padding: 15px 0;
+        border-top: 1px solid #eee;
+    }
+    header nav ul.nav-menu.active { /* Para mostrar con JS */
+        display: flex;
+    }
+    header nav ul.nav-menu li {
+        margin: 0; /* Quitar margen lateral */
+        width: 100%;
+    }
+    header nav ul.nav-menu li a {
+        display: block; /* Que ocupen todo el ancho */
+        padding: 12px 20px; /* Buen padding para tocar */
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0; /* Separador entre items */
+        line-height: normal; /* Resetear line-height */
+    }
+    header nav ul.nav-menu li:last-child a {
+        border-bottom: none; /* Sin borde para el último item */
+    }
+    .menu-toggle {
+        display: block; /* Visible en móvil */
+    }
 
-    .hero-section { height: auto; min-height: 70vh; padding: 50px 20px; }
-    .hero-content h1 { font-size: 2.1rem; }
+    .hero-section {
+        height: auto;
+        min-height: 75vh; /* Ajustar para mejor visualización en móviles */
+        padding: 60px 15px; /* Menos padding horizontal */
+    }
+    .hero-content h1 { font-size: 2.2rem; }
     .hero-content p { font-size: 1rem; }
-    .hero-content { padding: 25px; }
+    .hero-content { padding: 25px; max-width: 90%;}
 
-    h2 { font-size: 1.9rem; }
-    .feature-cards { flex-direction: column; align-items: center; gap: 25px; }
-    .card { min-width: 280px; }
     .content-section { padding: 50px 0; }
-    .contact-form { padding: 20px; }
-    .contact-details p { font-size: 1rem; }
+    .section-intro { font-size: 1.05rem; max-width: 90%; }
+    .card { min-width: 90%; max-width: 90%; padding: 20px; }
+    .card img.card-img-top { height: 180px; }
+    .card h3 { font-size: 1.5rem; }
+
+    .contact-form { padding: 25px 20px; }
+    .contact-details p { font-size: 1.05rem; }
+    #impacto ul li { padding: 15px 20px; font-size: 1rem; }
 }
