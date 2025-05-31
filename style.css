@@ -1,0 +1,404 @@
+/* Estilos Generales */
+:root {
+    --primary-color: #007bff; /* Azul primario */
+    --secondary-color: #28a745; /* Verde para sostenibilidad */
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --text-color: #333;
+    --light-text-color: #fdfdfd;
+    --font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+img.rounded {
+    border-radius: 8px;
+}
+img.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header y Navegación */
+header {
+    background-color: rgba(255, 255, 255, 0.95); /* Ligeramente más opaco */
+    padding: 0.5rem 0; /* Reducir padding vertical */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo-link #logo-empresa {
+    max-height: 60px; /* Ajusta según el tamaño de tu logo */
+    width: auto;
+    vertical-align: middle;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center; /* Para alinear con el logo si es necesario */
+}
+
+header nav ul li {
+    margin-left: 25px; /* Aumentar un poco el espaciado */
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 8px 12px; /* Ajustar padding */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    border-bottom: 2px solid transparent; /* Para efecto hover */
+}
+
+header nav ul li a:hover, header nav ul li a.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border: none;
+    text-align: center;
+}
+.btn:hover {
+    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+    margin-top: 10px;
+}
+.btn-secondary:hover {
+    background-color: #1e7e34;
+}
+
+
+/* Hero Section con Video/Imagen de Fondo */
+.hero-section {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg'); /* RUTA MODIFICADA - verifica extensión real */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0; /* Detrás del contenido pero sobre el background-image si el video falla */
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 30px 40px; /* Más padding horizontal */
+    border-radius: 10px;
+    max-width: 800px; /* Limitar ancho del contenido */
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para legibilidad */
+}
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+
+/* Secciones de Contenido */
+.content-section {
+    padding: 70px 0; /* Más padding */
+}
+.content-section.bg-light {
+    background-color: var(--light-color);
+}
+.content-section.bg-dark {
+    background-color: var(--dark-color);
+}
+.content-section.bg-dark h2,
+.content-section.bg-dark p,
+.content-section.bg-dark .contact-details p,
+.content-section.bg-dark .section-intro {
+    color: var(--light-text-color);
+}
+.content-section.bg-dark a:not(.btn) { /* Para enlaces de texto en fondo oscuro */
+    color: #99caff;
+}
+.content-section.bg-dark a:not(.btn):hover {
+    color: #cce5ff;
+}
+
+.section-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 750px;
+    margin: 0 auto 3rem auto;
+}
+
+
+/* Layout Dual (para dos columnas) */
+.dual-layout {
+    display: flex;
+    gap: 40px; /* Más espacio */
+    align-items: center; /* Centrar verticalmente si es posible */
+}
+.dual-layout > div {
+    flex: 1;
+}
+.dual-layout img {
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra sutil a imágenes */
+}
+
+
+/* Tarjetas (Cards) para Características/Tecnología */
+.feature-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+.card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 320px;
+    max-width: 380px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.card img.card-img-top {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+.technology-video {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 1.6rem;
+}
+.card-short-desc {
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    color: #444;
+}
+.card-full-desc {
+    margin-bottom: 1.5rem;
+    font-size: 0.95em;
+    color: #555;
+    flex-grow: 1;
+}
+.card-full-desc ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-top: 0.5rem;
+}
+.card-full-desc ul li {
+    margin-bottom: 0.3rem;
+}
+
+
+/* Sección de Impacto - Lista */
+#impacto ul {
+    list-style: none;
+    padding-left: 0;
+    max-width: 800px; /* Centrar y limitar ancho */
+    margin: 1.5rem auto 0 auto;
+}
+#impacto ul li {
+    background-color: #fff;
+    padding: 18px 25px;
+    margin-bottom: 12px;
+    border-left: 6px solid var(--secondary-color);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+    font-size: 1.1rem;
+    border-radius: 0 5px 5px 0;
+}
+#impacto ul li strong {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* Formulario de Contacto */
+.contact-form {
+    max-width: 700px;
+    margin: 2rem auto 3rem auto; /* Más margen inferior */
+    background-color: rgba(255,255,255,0.08); /* Ligero ajuste */
+    padding: 30px;
+    border-radius: 8px;
+}
+.form-group {
+    margin-bottom: 1.5rem; /* Más espacio */
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 14px; /* Más padding */
+    border-radius: 5px;
+    border: 1px solid #666; /* Borde más visible */
+    background-color: #3f454c; /* Un poco más claro */
+    color: var(--light-text-color);
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px; /* Altura mínima */
+}
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: #a0a8b0; /* Placeholder más claro */
+}
+.contact-details {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+.contact-details p {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+.contact-details p strong {
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: #ccc; /* Un poco más claro para el texto del footer */
+    text-align: center;
+    padding: 2.5rem 0; /* Más padding */
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 2.6rem; }
+    .hero-content p { font-size: 1.1rem; }
+    .dual-layout { flex-direction: column; gap: 25px; }
+    .card { max-width: 90%; margin-left:auto; margin-right:auto; } /* Centrar tarjetas en tablet */
+    header .logo-link #logo-empresa { max-height: 50px; }
+    header nav ul li { margin-left: 15px; }
+}
+
+@media (max-width: 768px) {
+    header .container { flex-direction: column; }
+    header nav ul { flex-direction: column; text-align: center; margin-top: 1rem; width: 100%;}
+    header nav ul li { margin: 10px 0; display: block; width: 100%;}
+    header nav ul li a { display: block; padding: 10px; }
+    header .logo-link { margin-bottom: 10px; }
+
+
+    .hero-section { height: auto; min-height: 70vh; padding: 50px 20px; }
+    .hero-content h1 { font-size: 2.1rem; }
+    .hero-content p { font-size: 1rem; }
+    .hero-content { padding: 25px; }
+
+    h2 { font-size: 1.9rem; }
+    .feature-cards { flex-direction: column; align-items: center; gap: 25px; }
+    .card { min-width: 280px; }
+    .content-section { padding: 50px 0; }
+    .contact-form { padding: 20px; }
+    .contact-details p { font-size: 1rem; }
+}
