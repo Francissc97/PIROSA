@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIROSA - Transformando Residuos en Energía en Huánuco</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    </head>
 <body>
     <header>
         <nav class="container">
             <a href="#inicio" class="logo-link">
-                <img src="logo.png" alt="Logo PIROSA" id="logo-empresa"> </a>
-            <ul>
+                <img src="logo.png" alt="Logo PIROSA" id="logo-empresa">
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu-main">
+                <span class="menu-icon-bar"></span>
+                <span class="menu-icon-bar"></span>
+                <span class="menu-icon-bar"></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu-main">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#solucion">Nuestra Solución</a></li>
                 <li><a href="#tecnologia">Tecnología</a></li>
@@ -58,7 +64,8 @@
                 <p class="section-intro">Utilizamos procesos avanzados y probados para garantizar la máxima eficiencia en la transformación de residuos.</p>
                 <div class="feature-cards">
                     <div class="card">
-                        <img src="pirolisis-proceso.png" alt="Proceso de Pirolisis" class="card-img-top"> <h3>Pirólisis: Plásticos a Gasolina</h3>
+                        <img src="pirolisis-proceso.png" alt="Proceso de Pirolisis" class="card-img-top">
+                        <h3>Pirólisis: Plásticos a Gasolina</h3>
                         <p class="card-short-desc">Nuestro proceso de pirólisis descompone térmicamente los residuos plásticos en ausencia de oxígeno, transformándolos en una gasolina sintética de alta calidad.</p>
                         <div class="card-full-desc" style="display: none;">
                             <p>La pirólisis es un proceso termoquímico avanzado donde los polímeros plásticos se calientan a altas temperaturas (típicamente entre 400°C y 600°C) en una atmósfera sin oxígeno. Esta descomposición rompe las largas cadenas moleculares del plástico en compuestos más pequeños. En PIROSA, optimizamos este proceso para maximizar la producción de una fracción líquida similar a la gasolina, además de gases combustibles y un residuo carbonoso (char).</p>
@@ -73,7 +80,8 @@
                         <button class="btn btn-secondary read-more-btn">Leer Más</button>
                     </div>
                     <div class="card">
-                        <img src="gasificacion-proceso.png" alt="Proceso de Gasificación" class="card-img-top"> <h3>Gasificación: Orgánicos a Gas Renovable</h3>
+                        <img src="gasificacion-proceso.png" alt="Proceso de Gasificación" class="card-img-top">
+                        <h3>Gasificación: Orgánicos a Gas Renovable</h3>
                         <p class="card-short-desc">Mediante la gasificación, convertimos residuos orgánicos en un gas sintético (syngas) rico en energía.</p>
                         <div class="card-full-desc" style="display: none;">
                             <p>La gasificación es un proceso termoquímico que convierte materiales carbonosos, como los residuos orgánicos, en un gas combustible conocido como gas de síntesis o syngas. Esto se logra mediante la reacción del material a altas temperaturas (superiores a 700°C) con una cantidad controlada de oxígeno y/o vapor. El syngas producido es una mezcla principalmente de hidrógeno (H₂), monóxido de carbono (CO) y dióxido de carbono (CO₂).</p>
@@ -96,11 +104,13 @@
                 <h2>Productos Valiosos Derivados de Residuos</h2>
                 <div class="dual-layout">
                     <div>
-                        <img src="producto-gasolina.png" alt="Gasolina de Pirolisis" class="img-fluid rounded"> <h3>Gasolina de Alta Calidad</h3>
+                        <img src="producto-gasolina.jpg" alt="Gasolina de Pirolisis" class="img-fluid rounded">
+                        <h3>Gasolina de Alta Calidad</h3>
                         <p>Obtenida de la pirólisis de plásticos, nuestra gasolina cumple con estándares para su uso en diversos motores, ofreciendo una alternativa energética local y más sostenible.</p>
                     </div>
                     <div>
-                        <img src="producto-gas.png" alt="Gas Renovable" class="img-fluid rounded"> <h3>Gas Sintético Renovable</h3>
+                        <img src="producto-gas.jpg" alt="Gas Renovable" class="img-fluid rounded">
+                        <h3>Gas Sintético Renovable</h3>
                         <p>El syngas producido por la gasificación de residuos orgánicos es un combustible versátil y limpio, ideal para aplicaciones industriales y energéticas en Huánuco.</p>
                     </div>
                 </div>
@@ -148,23 +158,31 @@
         <section id="contacto" class="content-section bg-dark text-light">
             <div class="container">
                 <h2>Ponte en Contacto con Nosotros</h2>
-                <p>Estamos listos para responder tus preguntas y explorar cómo podemos colaborar.</p>
-                <form class="contact-form" action="#" method="POST"> 
+                <p class="section-intro">Estamos listos para responder tus preguntas y explorar cómo podemos colaborar.</p>
+                <form class="contact-form" action="https://formspree.io/f/mblyrzlb" method="POST">
                     <div class="form-group">
-                        <input type="text" name="nombre" placeholder="Tu Nombre" required>
+                        <label for="contact-nombre">Nombre:</label>
+                        <input type="text" id="contact-nombre" name="nombre" placeholder="Tu Nombre Completo" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
+                        <label for="contact-email">Correo Electrónico:</label>
+                        <input type="email" id="contact-email" name="_replyto" placeholder="Tu Correo Electrónico" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="mensaje" rows="5" placeholder="Tu Mensaje" required></textarea>
+                        <label for="contact-asunto">Asunto (Opcional):</label>
+                        <input type="text" id="contact-asunto" name="_subject" placeholder="Asunto del Mensaje">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-mensaje">Mensaje:</label>
+                        <textarea id="contact-mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                 </form>
                 <div class="contact-details">
+                    <h3>Nuestra Oficina</h3>
                     <p><strong>Dirección:</strong> Jr. Independencia 1311, Huánuco, Perú</p>
-                    <p><strong>Teléfono:</strong> +51964604628</p>
-                    <p><strong>Email:</strong> Francissc97@gmail.com</p>
+                    <p><strong>Teléfono:</strong> <a href="tel:+51964604628">+51 964 604 628</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:Francissc97@gmail.com">Francissc97@gmail.com</a></p>
                 </div>
             </div>
         </section>
