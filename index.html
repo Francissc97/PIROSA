@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIROSA - Transformando Residuos en Energía en Huánuco</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon" type="image/jpeg"> </head>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
     <header>
         <nav class="container">
-            <a href="index.html" class="logo-link"> <img src="logo.png" alt="Logo PIROSA" id="logo-empresa"> </a>
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Logo PIROSA" id="logo-empresa">
+            </a>
             <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu-main">
                 <span class="menu-icon-bar"></span>
                 <span class="menu-icon-bar"></span>
@@ -102,12 +106,12 @@
                 <h2>Productos Valiosos Derivados de Residuos</h2>
                 <div class="dual-layout">
                     <div>
-                        <img src="producto-gasolina.png" alt="Gasolina de Pirolisis" class="img-fluid rounded">
+                        <img src="producto-gasolina.jpg" alt="Gasolina de Pirolisis" class="img-fluid rounded">
                         <h3>Gasolina de Alta Calidad</h3>
                         <p>Obtenida de la pirólisis de plásticos, nuestra gasolina cumple con estándares para su uso en diversos motores, ofreciendo una alternativa energética local y más sostenible.</p>
                     </div>
                     <div>
-                        <img src="producto-gas.png" alt="Gas Renovable" class="img-fluid rounded">
+                        <img src="producto-gas.jpg" alt="Gas Renovable" class="img-fluid rounded">
                         <h3>Gas Sintético Renovable</h3>
                         <p>El syngas producido por la gasificación de residuos orgánicos es un combustible versátil y limpio, ideal para aplicaciones industriales y energéticas en Huánuco.</p>
                     </div>
@@ -157,30 +161,39 @@
             <div class="container">
                 <h2>Ponte en Contacto con Nosotros</h2>
                 <p class="section-intro">Estamos listos para responder tus preguntas y explorar cómo podemos colaborar.</p>
-                <form class="contact-form" action="https://formspree.io/f/mblyrzlb" method="POST">
-                    <div class="form-group">
-                        <label for="contact-nombre">Nombre:</label>
-                        <input type="text" id="contact-nombre" name="nombre" placeholder="Tu Nombre Completo" required>
+                <div class="contact-main-area">
+                    <div class="contact-form-container">
+                        <form class="contact-form" action="https://formspree.io/f/mblylzlb" method="POST">
+                            <div class="form-group">
+                                <label for="contact-nombre">Nombre:</label>
+                                <input type="text" id="contact-nombre" name="nombre" placeholder="Tu Nombre Completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Correo Electrónico:</label>
+                                <input type="email" id="contact-email" name="_replyto" placeholder="Tu Correo Electrónico" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-asunto">Asunto (Opcional):</label>
+                                <input type="text" id="contact-asunto" name="_subject" placeholder="Asunto del Mensaje">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-mensaje">Mensaje:</label>
+                                <textarea id="contact-mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="contact-email">Correo Electrónico:</label>
-                        <input type="email" id="contact-email" name="_replyto" placeholder="Tu Correo Electrónico" required>
+                    <div class="contact-info-map-container">
+                        <div class="contact-details">
+                            <h3>Nuestra Oficina</h3>
+                            <p><strong>Dirección:</strong> Jr. Independencia 1311, Huánuco, Perú</p>
+                            <p><strong>Teléfono:</strong> <a href="tel:+51964604628">+51 964 604 628</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:Francissc97@gmail.com">Francissc97@gmail.com</a></p>
+                        </div>
+                        <div class="map-container">
+                            <p><em>Cargando mapa... (Reemplaza este texto con el iframe de Google Maps)</em></p>
+                            </div>
                     </div>
-                    <div class="form-group">
-                        <label for="contact-asunto">Asunto (Opcional):</label>
-                        <input type="text" id="contact-asunto" name="_subject" placeholder="Asunto del Mensaje">
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-mensaje">Mensaje:</label>
-                        <textarea id="contact-mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
-                <div class="contact-details">
-                    <h3>Nuestra Oficina</h3>
-                    <p><strong>Dirección:</strong> Jr. Independencia 1311, Huánuco, Perú</p>
-                    <p><strong>Teléfono:</strong> <a href="tel:+51964604628">+51 964 604 628</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:Francissc97@gmail.com">Francissc97@gmail.com</a></p>
                 </div>
             </div>
         </section>
@@ -188,9 +201,17 @@
 
     <footer>
         <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61574636976245" target="_blank" aria-label="Facebook de PIROSA"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/proyecto.pirosa/" target="_blank" aria-label="Instagram de PIROSA"><i class="fab fa-instagram"></i></a>
+                </div>
             <p>&copy; <span id="year"></span> PIROSA. Todos los derechos reservados. Huánuco, Perú.</p>
         </div>
     </footer>
+
+    <a href="https://wa.me/51964604628?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>
